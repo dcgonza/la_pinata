@@ -6,7 +6,10 @@ You walk forward with the up arrow and backwards with the
 down arrow. You turn left and right with the left and right
 arrows, respectively.
 
-Press 'q' or 'Q' to quit, or quit python.
+Press spacebar to swing the stick, and press 'c' to pick-up
+candy.
+
+Press 'q' or 'Q' to quit, or simply quit python.
 
 Thank you, enjoy.
 
