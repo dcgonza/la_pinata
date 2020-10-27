@@ -1,7 +1,9 @@
 # la_pinata
 A python game where you hit a piñata.
 
-Download freely. You will need python and pygame to run this game (I use python 3.9.0).
+Download freely. You will need python and pygame to run this game (I use python 3.9.0). I run by typing (in a terminal):
+
+  python3.9 la_pinata.py
 
 Press 'p' or click "Play" to play.
 
