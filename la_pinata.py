@@ -21,6 +21,8 @@ class LaPinata:
 		"""Initialize the game, and create game resources."""
 		self.filename = 'txt_files/high_score.txt'
 		self.song_fn  = 'audio/la_pinata_song.wav'
+		self.candy_fn = 'audio/candy_wrapper.wav'
+		self.cry_fn   = 'audio/cry_baby.wav'
 
 		pygame.init()
 
@@ -244,6 +246,9 @@ class LaPinata:
 			if (pygame.sprite.collide_rect(self.striker, candy)
 					and self.striker.collect_candy and
 					self.settings.release_candy):
+				pygame.mixer.music.load(self.candy_fn)
+				pygame.mixer.music.play(0)
+
 				self.candies.remove(candy)
 				self.stats.score += self.settings.candy_points
 				self.sb.prep_score()
@@ -254,6 +259,9 @@ class LaPinata:
 			candy.update()
 
 	def _striker_hit(self):
+		pygame.mixer.music.load(self.cry_fn)
+		pygame.mixer.music.play(0)
+
 		if self.stats.strikers_left > 0:
 			self.stats.strikers_left -= 1
 			self.sb.prep_strikers()
@@ -275,11 +283,13 @@ class LaPinata:
 		for candy in self.candies:
 			if (pygame.sprite.spritecollideany(candy, self.kids)
 					and self.settings.release_candy):
+				pygame.mixer.music.load(self.candy_fn)
+				pygame.mixer.music.play(0)
+
 				self.candies.remove(candy)
 				self.stats.score -= self.settings.candy_points
 				self.sb.prep_score()
 				self.sb.check_high_score()
-				print("Kids got candy")
 
 # 	def _kids_collect_candy():
 # 		if self.stats.candy_left > 0:
