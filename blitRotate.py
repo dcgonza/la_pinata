@@ -6,7 +6,8 @@ def blitRotate(self):
 	w, h       = self.w, self.h
 	originPos  = (w//2, h//2)
 	pos        = (self.rect.x//2, self.rect.y//2)
-	angle      = self.settings.striker_theta
+# 	angle      = self.settings.striker_theta
+	angle      = self.theta
 
 	box        = [pygame.math.Vector2(p) for p in [(0, 0),
 			(w, 0), (w, -h), (0, -h)]]
@@ -22,5 +23,6 @@ def blitRotate(self):
 	pivot_move   = pivot_rotate - pivot
 
 	# get a rotated image
-	self.rotated_image = pygame.transform.rotate(self.image, angle)
+	self.rotated_image = pygame.transform.rotate(self.images[self.index], angle)
+	self.image = self.rotated_image
 	self.w, self.h = self.rotated_image.get_size()

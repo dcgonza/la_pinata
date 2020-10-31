@@ -4,6 +4,7 @@ from random import randint
 
 from pygame.sprite import Sprite
 from blitRotate import blitRotate
+from findNearestCandy import findNearestCandy
 
 class Kid(Sprite):
 	"""A class to represent a single kid in the gang."""
@@ -11,11 +12,259 @@ class Kid(Sprite):
 	def __init__(self, ai_game):
 		"""Initialize the kid and set its starting position."""
 		super().__init__()
+
+		self.images = []
+
 		self.screen = ai_game.screen
 		self.settings = ai_game.settings
 
 		# Load the alien image and set its rect attribute.
-		self.image = pygame.image.load('images/kid.png')
+#		self.image = pygame.image.load('images/kid.png')
+
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_07.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_06.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_05.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_04.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_01.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_02.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+		self.images.append(pygame.image.load('images/kid_03.png'))
+
+		self.index = 0
+
+		self.image = self.images[self.index]
 		self.rect = self.image.get_rect()
 		self.rotated_image = self.image
 
@@ -27,13 +276,8 @@ class Kid(Sprite):
 		self.x = float(self.rect.x)
 		self.y = float(self.rect.y)
 
-		self.cur_theta = 0
+		self.theta = 0
 		self.w, self.h = self.image.get_size()
-
-		self.rotating_ccw = False
-		self.rotating_cw = False
-		self.moving_fwd = False
-		self.moving_bwd = False
 
 		self.random_placement()
 
@@ -41,25 +285,15 @@ class Kid(Sprite):
 		"""Update the striker's position based on the movement flags."""
 		# Update the ship's value, not the rect.
 		if (self.settings.release_candy):
-			a = 0
-		else:
-			a = 1
-
-		if self.rotating_cw:
-			self.cur_theta -= self.settings.rotation_value
+			self.theta = findNearestCandy(self)
+			self.y -= math.cos(self.theta * math.pi / 180)
+			self.x -= math.sin(self.theta * math.pi / 180)
+			self.index += 1
+			if self.index >= len(self.images):
+				self.index = 0
+			self.image = self.images[self.index]
+			self.rotated_image = self.image
 			blitRotate(self)
-			self.cur_theta = self.cur_theta % 360
-		if self.rotating_ccw:
-			self.cur_theta += self.settings.rotation_value
-			blitRotate(self)
-			self.cur_theta = self.cur_theta % 360
-		if self.moving_fwd:
-			self.y -= math.cos(self.cur_theta * math.pi / 180)
-			self.x -= math.sin(self.cur_theta * math.pi / 180)
-			self.check_bounds()
-		if self.moving_bwd:
-			self.y += math.cos(self.cur_theta * math.pi / 180)
-			self.x += math.sin(self.cur_theta * math.pi / 180)
 			self.check_bounds()
 
 	def blitme(self):
@@ -73,7 +307,12 @@ class Kid(Sprite):
 		if self.x <= (self.settings.screen_width - self.w) and self.x > 0:
 			self.rect.x = self.x
 
+		self.y = self.rect.y
+		self.x = self.rect.x
+
 	def random_placement(self):
-		"""Initially place the kid is some random location"""
+		"""Initially place the kid at some random location"""
 		self.rect.x = randint(100, self.settings.max_width_placement)
 		self.rect.y = randint(100, self.settings.max_height_placement)
+		self.x = float(self.rect.x)
+		self.y = float(self.rect.y)

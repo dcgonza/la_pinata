@@ -203,16 +203,17 @@ class LaPinata:
 
 	def _create_gang(self):
 		""" Create the gang of kids."""
-		kid = Kid(self)
-
 		for kid_index in range(randint(1, self.settings.num_kids)):
 			kid = Kid(self)
 			self.kids.add(kid)
 
 	def _create_candies(self):
 		""" Create the gang of kids."""
-		candy = Candy(self)
-		candy_width, candy_height = candy.rect.size
+		self.settings.candy_x = []
+		self.settings.candy_y = []
+
+# 		candy = Candy(self)
+# 		candy_width, candy_height = candy.rect.size
 
 		for candy_index in range(self.settings.max_num_candies):
 			self._create_candy()
@@ -220,7 +221,7 @@ class LaPinata:
 	def _create_candy(self):
 		"""Create a kid and place it in the frame."""
 		candy = Candy(self)
-		candy_width, candy_height = candy.rect.size
+# 		candy_width, candy_height = candy.rect.size
 		self.candies.add(candy)
 
 	def _update_gang(self):
@@ -261,6 +262,7 @@ class LaPinata:
 	def _striker_hit(self):
 		pygame.mixer.music.load(self.cry_fn)
 		pygame.mixer.music.play(0)
+		sleep(0.8)
 
 		if self.stats.strikers_left > 0:
 			self.stats.strikers_left -= 1

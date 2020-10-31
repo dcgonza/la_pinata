@@ -7,8 +7,8 @@ class Settings:
 		self.screen_width  = 1200
 		self.screen_height = 800
 		self.bg_color = (255, 255, 255)
-		self.max_height_placement = self.screen_height - 100
-		self.max_width_placement = self.screen_width - 100
+		self.max_height_placement = self.screen_height - 120
+		self.max_width_placement = self.screen_width - 120
 
 		# Pinata settings
 		self.max_pinata_zoom = 2
@@ -39,12 +39,13 @@ class Settings:
 
 	def initialize_dynamic_settings(self):
 		"""Initialize settings that change throughout the game."""
-		self.striker_speed = 1.5
-		self.swing_speed   = 1.0
+# 		self.striker_speed = 1.5
+# 		self.swing_speed   = 1.0
 		self.pinata_speed  = 0.1
-		self.candy_speed   = 0.5
+# 		self.candy_speed   = 0.5
 		self.candy_radius  = 20.0
 		self.candy_direction = 0
+# 		self.kid_speed     = 0.5
 
 		self.num_kids = 5
 
@@ -66,18 +67,19 @@ class Settings:
 		# Candy settings
 		self.max_num_candies = 10
 		self.release_candy = False
-# 		self.candy_locations_x = []
-# 		self.candy_locations_y = []
+		self.candy_x = []
+		self.candy_y = []
 
 		# Scoring
 		self.candy_points = 50
 
 	def increase_difficulty(self):
 		"""Increase the speed settings and candy point valies."""
-		self.striker_speed *= self.speedup_scale
-		self.swing_speed   *= self.speedup_scale
-# 		self.pinata_speed  *= self.speedup_scale
-		self.candy_speed   *= self.speedup_scale
+# 		self.striker_speed *= self.speedup_scale
+# 		self.swing_speed   *= self.speedup_scale
+# # 		self.pinata_speed  *= self.speedup_scale
+# 		self.candy_speed   *= self.speedup_scale
+# 		self.kid_speed     *= self.speedup_scale
 
 		self.pinata_zoom_factor *= self.speedup_scale
 

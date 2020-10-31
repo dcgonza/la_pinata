@@ -19,14 +19,14 @@ class Candy(Sprite):
 # 		self.rect = pygame.Rect(0, 0, self.settings.candy_width,
 # 			self.settings.candy_height)
 # 		self.rect.midtop = ai_game.pinata.rect.midtop
-		self.rect.x = randint(100, self.settings.max_width_placement)
-		self.rect.y = randint(100, self.settings.max_height_placement)
-# 		self.settings.candy_locations_x.append(self.rect.x)
-# 		self.settings.candy_locations_y.append(self.rect.y)
+		self.rect.x = randint(120, self.settings.max_width_placement)
+		self.rect.y = randint(120, self.settings.max_height_placement)
 
 		# Store the candy's position as a decimal value.
 		self.x = float(self.rect.x)
 		self.y = float(self.rect.y)
+		self.settings.candy_x.append(self.x)
+		self.settings.candy_y.append(self.y)
 
 	def update(self):
 		"""Do nothing for now"""
