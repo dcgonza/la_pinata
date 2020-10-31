@@ -50,6 +50,7 @@ class Pinata(Sprite):
 			self.settings.pinata_height -= self.settings.pinata_zoom_factor
 			if self.settings.pinata_height < 1:
 				self.going_up = 1
+
 		self.zoomed_image = pygame.transform.rotozoom(
 			self.image, 0, self.settings.pinata_height)
 

@@ -24,13 +24,10 @@ class LaPinata:
 		self.candy_fn = 'audio/candy_wrapper.wav'
 		self.cry_fn   = 'audio/cry_baby.wav'
 
+		pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=4096)
 		pygame.init()
-
+		
 		self.SONG_END = pygame.USEREVENT + 1
-
-		pygame.mixer.music.set_endevent(self.SONG_END)
-		pygame.mixer.music.load(self.song_fn)
-		pygame.mixer.music.play(-1)
 
 		self.settings = Settings()
 
@@ -54,10 +51,10 @@ class LaPinata:
 		self.load_high_score()
 
 		# Create a gang of kids
-		self._create_gang()
+# 		self._create_gang()
 
 		# Create bunch of candies
-		self._create_candies()
+# 		self._create_candies()
 
 		# Make the play button.
 		self.play_button = Button(self, "Play")
@@ -90,6 +87,11 @@ class LaPinata:
 
 	def run_game(self):
 		"""Start the main loop for the game."""
+		pygame.mixer.music.set_endevent(self.SONG_END)
+		pygame.mixer.music.load(self.song_fn)
+		pygame.mixer.music.play(-1)
+		sleep(0.5)
+
 		while True:
 			self._check_events()
 
@@ -116,9 +118,6 @@ class LaPinata:
 				self.settings.increase_difficulty()
 				self.stats.level += 1
 				self.sb.prep_level()
-				pygame.mixer.music.set_endevent(self.SONG_END)
-				pygame.mixer.music.load(self.song_fn)
-				pygame.mixer.music.play()
 
 			self._update_screen()
 

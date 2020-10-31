@@ -284,7 +284,7 @@ class Kid(Sprite):
 	def update(self):
 		"""Update the striker's position based on the movement flags."""
 		# Update the ship's value, not the rect.
-		if (self.settings.release_candy):
+		if self.settings.release_candy:
 			self.theta = findNearestCandy(self)
 			self.y -= math.cos(self.theta * math.pi / 180)
 			self.x -= math.sin(self.theta * math.pi / 180)

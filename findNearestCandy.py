@@ -6,8 +6,8 @@ def findNearestCandy(self):
 # 	r = math.sqrt(x**2 + y**2)
 # 	theta = math.atan(y/x)
 
-	nearest_candy_x = float('inf')
-	nearest_candy_y = float('inf')
+	nearest_candy_x = float(5000)
+	nearest_candy_y = float(5000)
 
 	d_old = dist(nearest_candy_x, nearest_candy_y, x1, y1)
 
